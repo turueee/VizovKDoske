@@ -1,9 +1,9 @@
 #include "back.h"
 
 
-void fuel_names(std::vector<std::string>& _names, const std::vector<std::string>& missing)
+void fuel_names(std::vector<std::string>& names, const std::vector<std::string>& missing)
 {
-	_names = {
+	names = {
 		"Volkov Roman",
 		"Galochkin Dmitriy",
 		"Gerasimov Andrey",
@@ -20,7 +20,7 @@ void fuel_names(std::vector<std::string>& _names, const std::vector<std::string>
 		"Federova Ksenya",
 		"Yanaliev Maxim"
 	};
-	delete_missing(_names, missing);
+	delete_missing(names, missing);
 }
 
 void delete_missing(std::vector<std::string>& _names, const std::vector<std::string>& missing)
@@ -55,7 +55,7 @@ int min(std::map<std::string, size_t> calls)
 	return min;
 }
 
-void k_doske(std::vector<std::string>& _names, const size_t stud, std::map<std::string, size_t>& calls, std::vector<std::string> missing)
+void k_doske(const size_t stud, std::map<std::string, size_t>& calls, std::vector<std::string> missing)
 {
 	std::srand(std::time(nullptr));
 	std::vector<std::string> min_calls, max_calls;

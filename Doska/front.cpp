@@ -39,7 +39,7 @@ void call_students(std::map<std::string, size_t>& calls, std::vector<std::string
 		std::cerr << "Error count\n";
 		return;
 	}
-	k_doske(names, stud, calls, missing);
+	k_doske(stud, calls, missing);
 	fuel_names(names, missing);
 }
 
