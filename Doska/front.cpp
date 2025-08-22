@@ -17,11 +17,17 @@ void menu(std::map<std::string, size_t>& calls, std::vector<std::string>& names,
 			call_students(calls, names, missing);
 			continue;
 		case 2:
+		{
+			ask(in_names);
 			plus_point(calls, in_names);
 			continue;
+		}
 		case 3:
+		{
+			ask(in_names);
 			minus_point(calls, in_names);
 			continue;
+		}
 		case 4:
 			return;
 		}
@@ -45,14 +51,32 @@ void call_students(std::map<std::string, size_t>& calls, std::vector<std::string
 
 void ask_missing(std::vector<std::string>& names)
 {
+	std::flush(std::cout);
 	std::cout << "Enter names of missing students:\n";
 	while (true)
 	{
 		std::string name;
-		std::cout << "Enter name:";
 		std::getline(std::cin, name);
 		if (name == "end")
 			break;
+		else if (name.empty())
+			continue;
+		names.push_back(name);
+	}
+}
+
+void ask(std::vector<std::string>& names)
+{
+	std::flush(std::cout);\
+	std::cout << "Enter names:\n";
+	while (true)
+	{
+		std::string name;
+		std::getline(std::cin, name);
+		if (name == "end")
+			break;
+		else if (name.empty())
+			continue;
 		names.push_back(name);
 	}
 }
