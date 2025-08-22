@@ -18,5 +18,22 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="back.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="front.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="calls.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="back.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="front.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
