@@ -57,35 +57,32 @@ int min(std::map<std::string, size_t> calls)
 
 void k_doske(const size_t stud, std::map<std::string, size_t>& calls, std::vector<std::string> missing)
 {
+	read_from_file(calls);
 	std::srand(std::time(nullptr));
-	std::vector<std::string> min_calls, max_calls;
-	size_t minim = min(calls), i = 0;
-	for (std::pair<std::string, size_t> call : calls)
+	std::set<int> count_calls;
+	for (std::pair<std::string, int>call : calls)
+		count_calls.insert(call.second);
+	std::vector<int> counts(count_calls.begin(),count_calls.end());
+	std::vector<std::vector<std::string>> names_calls(counts.size());
+	for (size_t i = 0; i < counts.size(); ++i)
 	{
-		if (call.second == minim)
-			min_calls.push_back(call.first);
-		else
-			max_calls.push_back(call.first);
+		for (std::pair<std::string, int> call : calls)
+			if (counts[i] == call.second)
+				names_calls[i].push_back(call.first);
+		delete_missing(names_calls[i], missing);
 	}
-	delete_missing(min_calls, missing);
-	delete_missing(max_calls, missing);
-	while (!min_calls.empty() && i < stud)
-	{
-		int random = std::rand() % min_calls.size();
-		std::cout << min_calls[random] << std::endl;
-		calls[min_calls[random]] += 1;
-		min_calls.erase(min_calls.begin() + random);
-		i++;
-	}
-	while (!max_calls.empty() && i < stud)
-	{
-		int random = std::rand() % max_calls.size();
-		std::cout << max_calls[random] << std::endl;
-		calls[max_calls[random]] += 1;
-		max_calls.erase(max_calls.begin() + random);
-		i++;
-	}
+	size_t i = 0;
+	for (size_t u = 0; u < counts.size(); ++u)
+		while (!names_calls[u].empty() && i < stud)
+		{
+			int random = std::rand() % names_calls[u].size();
+			std::cout << names_calls[u][random] << std::endl;
+			calls[names_calls[u][random]] += 1;
+			names_calls[u].erase(names_calls[u].begin() + random);
+			i++;
+		}
 	std::cout << std::endl;
+	save_to_file(calls);
 }
 
 void read_from_file(std::map<std::string, size_t>& calls)
@@ -107,7 +104,7 @@ void save_to_file(std::map<std::string, size_t>& calls)
 	if (file.is_open())
 		for (std::pair<std::string, int> name : calls)
 		{
-			file << name.first << ' ' << name.second << '\n';
+			file << name.first << ' ' << ((name.second>=0)?name.second:0) << '\n';
 		}
 	file.close();
 }

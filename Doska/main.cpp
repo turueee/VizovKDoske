@@ -13,16 +13,13 @@
 
 int main()
 {
-	std::fstream file("calls.txt");
-	std::vector<std::string> names(15);
+	std::vector<std::string> names;
 	std::map<std::string, size_t> calls;
 	std::vector<std::string> in_names,missing;
-	first_save(names);
+	//first_save(names);
 	ask_missing(missing);
 	fuel_names(names,missing);
 	read_from_file(calls);
 	menu(calls, names,missing,in_names);
-	fuel_names(names,missing);
 	save_to_file(calls);
-	file.close();
 }

@@ -4,6 +4,7 @@
 #include<vector>
 #include<map>
 #include<string>
+#include<set>
 #include<fstream>
 
 void fuel_names(std::vector<std::string>& _names, const std::vector<std::string>& missing);

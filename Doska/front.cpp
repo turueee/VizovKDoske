@@ -51,32 +51,30 @@ void call_students(std::map<std::string, size_t>& calls, std::vector<std::string
 
 void ask_missing(std::vector<std::string>& names)
 {
+	std::string name;
 	std::flush(std::cout);
 	std::cout << "Enter names of missing students:\n";
 	while (true)
 	{
-		std::string name;
+
 		std::getline(std::cin, name);
 		if (name == "end")
 			break;
-		else if (name.empty())
-			continue;
 		names.push_back(name);
 	}
 }
 
 void ask(std::vector<std::string>& names)
 {
-	std::flush(std::cout);\
+	std::string name;
+	std::flush(std::cout);
 	std::cout << "Enter names:\n";
+	std::getline(std::cin, name);
 	while (true)
 	{
-		std::string name;
 		std::getline(std::cin, name);
 		if (name == "end")
 			break;
-		else if (name.empty())
-			continue;
 		names.push_back(name);
 	}
 }
